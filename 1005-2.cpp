@@ -36,11 +36,11 @@ int main(){
         D.resize(N);
         dp.resize(N);
         indegree.resize(N);
-        v.resize(K);
+        v.resize(N);
         for(int j = 0; j < N; j++){
             cin >> D[j];
         }
-        for(int j = 0; j < K; j++){
+        for(int k = 0; k < K; k++){
             int X, Y;
             cin >> X >> Y;
             v[X-1].push_back(Y-1);
@@ -48,18 +48,7 @@ int main(){
         }
         cin >> W;
         W--;
-        // cout << T << endl;
-        // cout << N << " " << K << endl;
-        // for(int i = 0; i < N; i++){
-        //     cout << D[i] << " ";
-        // }
-        // cout << endl;
-        // for(int i = 0; i < N; i++){
-        //     for(int j = 0; j < v[i].size(); j++){
-        //         cout << i << " " << v[i][j] << endl;
-        //     }
-        // }
-        // cout << W << endl;
+        
         BFS();
         cout << dp[W] << endl;
         indegree.clear();
@@ -82,12 +71,10 @@ void BFS(){
         build.pop();
         for(int i = 0; i < v[curr].size(); i++){
             int next = v[curr][i];
-            if (next > 0){
-                dp[next] = max(dp[next], dp[curr] + D[next]);
-                indegree[next]--;
-                if (indegree[next] == 0) { 
-                    build.push(next); 
-                }
+            dp[next] = max(dp[next], dp[curr] + D[next]);
+            indegree[next]--;
+            if (indegree[next] == 0) { 
+                 build.push(next); 
             }
         }
     }
