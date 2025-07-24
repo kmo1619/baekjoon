@@ -31,10 +31,13 @@ int main() {
         // 초기화
 
         for (int j = 0; j < PlanetCount; j++){ // PlanetCount만큼 반복
+
             struct point planet; 
             // 행성의 좌표를 받아줄 구조체
+
             std::cin >> planet.x >> planet.y >> R; 
             // 행성 좌표와 반지름 입력
+
             len1 = (start.x-planet.x)*(start.x-planet.x) + (start.y-planet.y)*(start.y-planet.y);
             //출발지점과 행성간 거리 제곱 ( 절댓값을 위함 )
             len2 = (end.x-planet.x)*(end.x-planet.x) + (end.y-planet.y)*(end.y-planet.y);
